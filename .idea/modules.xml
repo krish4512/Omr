@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/OMR.iml" filepath="$PROJECT_DIR$/.idea/modules/OMR.iml" group="OMR" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/OMR-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/OMR-app.iml" group="OMR/app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="OMR/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/omr-OMR.iml" filepath="$PROJECT_DIR$/.idea/modules/omr-OMR.iml" group="OMR" />
     </modules>
   </component>
 </project>
