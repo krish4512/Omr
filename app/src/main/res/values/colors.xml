@@ -3,4 +3,9 @@
     <color name="colorPrimary">#333333</color>
     <color name="colorPrimaryDark">#333333</color>
     <color name="colorAccent">#333333</color>
+    <color name="dark">#121212</color>
+    <color name="goange">#FE9505</color>
+    <color name="meal">#9D9D9D</color>
+    <color name="light_font">#FBFBFB</color>
+    <color name="bluen">#3CB9C7</color>
 </resources>
