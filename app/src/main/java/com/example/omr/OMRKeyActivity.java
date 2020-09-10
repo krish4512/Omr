@@ -24,6 +24,7 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FullScreen f = new FullScreen(this);
         setContentView(R.layout.activity_o_m_r_key);
 
         noOfQuestions = getIntent().getIntExtra("noOfQuestions", 20);

@@ -11,6 +11,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FullScreen f = new FullScreen(this);
         setContentView(R.layout.splash_activity);
 
         handler=new Handler();

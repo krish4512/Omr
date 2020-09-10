@@ -4,45 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".OMRKeyActivity">
-
-    <TextView
-        android:id="@+id/titleAnswerKey"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/title_answer_key"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/saveAnswerKey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread" />
-
-    <TextView
-        android:id="@+id/saveAnswerKey"
-        android:layout_width="match_parent"
-        android:layout_height="31dp"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/save_answer_key"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleAnswerKey" />
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="374dp"
-
         android:layout_height="634dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="31dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/saveAnswerKey">
@@ -50,8 +19,39 @@
         <TableLayout
             android:id="@+id/tableLayout"
             android:layout_width="match_parent"
-            android:paddingTop="5dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp" />
     </ScrollView>
+
+    <TextView
+        android:id="@+id/saveAnswerKey"
+        android:layout_width="match_parent"
+        android:layout_height="31dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/short_stack"
+        android:text="@string/save_answer_key"
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleAnswerKey" />
+
+    <TextView
+        android:id="@+id/titleAnswerKey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/short_stack"
+        android:text="@string/title_answer_key"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
