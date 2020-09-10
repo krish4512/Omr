@@ -6,4 +6,6 @@
     <string name="_20">20</string>
     <string name="_100">100</string>
     <string name="click_on_camera_icon_to_scan_your_omr_sheet">Click on Camera icon to scan your OMR Sheet</string>
+    <string name="title_answer_key">Answer Key</string>
+    <string name="save_answer_key">(Press back to save answer key)</string>
 </resources>

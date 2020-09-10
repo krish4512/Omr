@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
+    int noOfQuestions=20;
     ImageButton Camera;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,5 +23,11 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+    }
+    public void displayAnswerKey(View view){
+        Intent omrKeyActivity = new Intent(this, OMRKeyActivity.class);
+
+        omrKeyActivity.putExtra("noOfQuestions", noOfQuestions);
+        startActivity(omrKeyActivity);
     }
 }
