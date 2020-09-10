@@ -32,7 +32,7 @@
         android:fontFamily="@font/short_stack"
         android:text="@string/save_answer_key"
         android:textAlignment="center"
-        android:textColor="@color/red"
+        android:textColor="@color/dark"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
