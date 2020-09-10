@@ -79,7 +79,7 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
             }
 
             textView.setTextSize(20);
-            textView.setPadding(5, 0, 0, 0);
+            textView.setPadding(20, 0, 0, 0);
 
             tableRow.addView(textView);
 
@@ -88,9 +88,8 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
                 CheckBox checkBox = new CheckBox(this);
                 checkBox.setId(j + (i * 5));
                 checkBox.setButtonDrawable(circleIds[j]);
-                checkBox.setPadding(5, 30, 5, 30);
+                checkBox.setPadding(25, 30, 25, 30);
                 checkBox.setOnCheckedChangeListener(this);
-
                 tableRow.addView(checkBox);
             }
             tableLayout.addView(tableRow);
