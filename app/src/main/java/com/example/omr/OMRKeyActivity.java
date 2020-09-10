@@ -12,22 +12,23 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnCheckedChangeListener{
+public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnCheckedChangeListener {
 
     private int[] circleIds = new int[]{R.mipmap.ic_omr_circle_a, R.mipmap.ic_omr_circle_b, R.mipmap.ic_omr_circle_c, R.mipmap.ic_omr_circle_d, R.mipmap.ic_omr_circle_e};
 
-//    private int[] correctAnswers;
+    private int[] correctAnswers;
 
-//    private int noOfQuestions;
+
+    private int noOfQuestions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_o_m_r_key);
 
-//        noOfQuestions = getIntent().getIntExtra("noOfQuestions", 20);
-//        createAnswerKey(noOfQuestions);
-//        loadCorrectAnswers(noOfQuestions);
+        noOfQuestions = getIntent().getIntExtra("noOfQuestions", 20);
+        createAnswerKey(noOfQuestions);
+        loadCorrectAnswers(noOfQuestions);
     }
 
     @Override
@@ -36,21 +37,20 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
         int id = compoundButton.getId();
         CheckBox checkBox;
 
-        for (int i = (id/5)*5; i < (id/5)*5 + 5; i++){
+        for (int i = (id / 5) * 5; i < (id / 5) * 5 + 5; i++) {
             checkBox = findViewById(i);
-            if(checkBox.isChecked() && i != id){
-                checkBox.setButtonDrawable(circleIds[i%5]);
+            if (checkBox.isChecked() && i != id) {
+                checkBox.setButtonDrawable(circleIds[i % 5]);
                 checkBox.setChecked(false);
                 break;
             }
         }
 
-        if(checked){
+        if (checked) {
             compoundButton.setButtonDrawable(R.mipmap.ic_omr_black_circle);
             compoundButton.setChecked(true);
-        }
-        else {
-            compoundButton.setButtonDrawable(circleIds[id%5]);
+        } else {
+            compoundButton.setButtonDrawable(circleIds[id % 5]);
             compoundButton.setChecked(false);
         }
     }
@@ -62,33 +62,33 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
 //    }
 
 
-    public void createAnswerKey(int noOfQuestions){
+    public void createAnswerKey(int noOfQuestions) {
 
         TableLayout tableLayout = findViewById(R.id.tableLayout);
 
-        for(int i=0; i < noOfQuestions; i++){
+        for (int i = 0; i < noOfQuestions; i++) {
 
             TextView textView = new TextView(this);
             TableRow tableRow;
             tableRow = new TableRow(this);
 
-            if(i<9) {
-                textView.setText(("\t"+ (i + 1) +")\t\t"));
+            if (i < 9) {
+                textView.setText(("\t" + (i + 1) + ")\t\t"));
             } else {
-                textView.setText(((i + 1) +")"+"\t\t"));
+                textView.setText(((i + 1) + ")" + "\t\t"));
             }
 
             textView.setTextSize(20);
-            textView.setPadding(5,0,0,0);
+            textView.setPadding(5, 0, 0, 0);
 
             tableRow.addView(textView);
 
-            for(int j = 0; j<5; j++){
+            for (int j = 0; j < 5; j++) {
 
                 CheckBox checkBox = new CheckBox(this);
                 checkBox.setId(j + (i * 5));
                 checkBox.setButtonDrawable(circleIds[j]);
-                checkBox.setPadding(5,30,5,30);
+                checkBox.setPadding(5, 30, 5, 30);
                 checkBox.setOnCheckedChangeListener(this);
 
                 tableRow.addView(checkBox);
@@ -97,7 +97,7 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
         }
     }
 
-//    public void loadCorrectAnswers(final int noOfQuestions){
+    public void loadCorrectAnswers(final int noOfQuestions) {
 //
 //        final String[] strCorrectAnswers = {""};
 //        final AppDatabase db = Room.databaseBuilder(getApplicationContext(),
@@ -169,5 +169,6 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
 //                }
 //            }.execute();
 //            Toast.makeText(this,"Answers saved",Toast.LENGTH_LONG).show();
-        }
+    }
+}
 
