@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnCheckedChangeListener {
 
-    private int[] circleIds = new int[]{R.mipmap.ic_omr_circle_a, R.mipmap.ic_omr_circle_b, R.mipmap.ic_omr_circle_c, R.mipmap.ic_omr_circle_d, R.mipmap.ic_omr_circle_e};
+    private int[] circleIds = new int[]{R.mipmap.ic_omr_circle_a, R.mipmap.ic_omr_circle_b, R.mipmap.ic_omr_circle_c, R.mipmap.ic_omr_circle_d};
 
     private int[] correctAnswers;
 
@@ -38,10 +38,10 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
         int id = compoundButton.getId();
         CheckBox checkBox;
 
-        for (int i = (id / 5) * 5; i < (id / 5) * 5 + 5; i++) {
+        for (int i = (id / 4) * 4; i < (id / 4) * 4 + 4; i++) {
             checkBox = findViewById(i);
             if (checkBox.isChecked() && i != id) {
-                checkBox.setButtonDrawable(circleIds[i % 5]);
+                checkBox.setButtonDrawable(circleIds[i % 4]);
                 checkBox.setChecked(false);
                 break;
             }
@@ -51,7 +51,7 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
             compoundButton.setButtonDrawable(R.mipmap.ic_omr_black_circle);
             compoundButton.setChecked(true);
         } else {
-            compoundButton.setButtonDrawable(circleIds[id % 5]);
+            compoundButton.setButtonDrawable(circleIds[id % 4]);
             compoundButton.setChecked(false);
         }
     }
@@ -72,6 +72,7 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
             TextView textView = new TextView(this);
             TableRow tableRow;
             tableRow = new TableRow(this);
+            tableRow.setPadding(0,12,0,0);
 
             if (i < 9) {
                 textView.setText(("\t" + (i + 1) + ")\t\t"));
@@ -80,16 +81,18 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
             }
 
             textView.setTextSize(20);
-            textView.setPadding(20, 0, 0, 0);
+            textView.setPadding(20, 0, 15, 0);
+            textView.setTextColor(getResources().getColor(R.color.dark));
+//textView.setTypeface(typeface);
+             tableRow.addView(textView);
 
-            tableRow.addView(textView);
 
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < 4; j++) {
 
                 CheckBox checkBox = new CheckBox(this);
-                checkBox.setId(j + (i * 5));
+                checkBox.setId(j + (i * 4));
                 checkBox.setButtonDrawable(circleIds[j]);
-                checkBox.setPadding(25, 30, 25, 30);
+                checkBox.setPadding(25, 12,55 , 30);
                 checkBox.setOnCheckedChangeListener(this);
                 tableRow.addView(checkBox);
             }
