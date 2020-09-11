@@ -1,6 +1,7 @@
 package com.example.omr;
 
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -10,6 +11,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 
 public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnCheckedChangeListener {
@@ -83,7 +85,8 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
             textView.setTextSize(20);
             textView.setPadding(20, 0, 15, 0);
             textView.setTextColor(getResources().getColor(R.color.dark));
-//textView.setTypeface(typeface);
+            Typeface typeface = ResourcesCompat.getFont(this, R.font.short_stack);
+            textView.setTypeface(typeface);
              tableRow.addView(textView);
 
 
