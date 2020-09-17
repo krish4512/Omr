@@ -1,7 +1,9 @@
 package com.example.omr;
 
 
+import android.annotation.SuppressLint;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -9,17 +11,18 @@ import android.widget.RadioButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.room.Room;
 
 
 public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnCheckedChangeListener {
 
-    private int[] circleIds = new int[]{R.mipmap.ic_omr_circle_a, R.mipmap.ic_omr_circle_b, R.mipmap.ic_omr_circle_c, R.mipmap.ic_omr_circle_d};
+    private int circleIds[] = new int[]{R.mipmap.ic_omr_circle_a, R.mipmap.ic_omr_circle_b, R.mipmap.ic_omr_circle_c, R.mipmap.ic_omr_circle_d};
 
     private int[] correctAnswers;
-
 
     private int noOfQuestions;
 
@@ -58,11 +61,11 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
         }
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        super.onBackPressed();
-//        storeCorrectAnswers(noOfQuestions);
-//    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        storeCorrectAnswers(noOfQuestions);
+    }
 
 
     public void createAnswerKey(int noOfQuestions) {
@@ -74,7 +77,7 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
             TextView textView = new TextView(this);
             TableRow tableRow;
             tableRow = new TableRow(this);
-            tableRow.setPadding(0,12,0,0);
+            tableRow.setPadding(0, 20, 0, 0);
 
             if (i < 9) {
                 textView.setText(("\t" + (i + 1) + ")\t\t"));
@@ -87,7 +90,7 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
             textView.setTextColor(getResources().getColor(R.color.dark));
             Typeface typeface = ResourcesCompat.getFont(this, R.font.short_stack);
             textView.setTypeface(typeface);
-             tableRow.addView(textView);
+            tableRow.addView(textView);
 
 
             for (int j = 0; j < 4; j++) {
@@ -95,7 +98,7 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
                 CheckBox checkBox = new CheckBox(this);
                 checkBox.setId(j + (i * 4));
                 checkBox.setButtonDrawable(circleIds[j]);
-                checkBox.setPadding(25, 12,55 , 30);
+                checkBox.setPadding(25, 12, 55, 30);
                 checkBox.setOnCheckedChangeListener(this);
                 tableRow.addView(checkBox);
             }
@@ -103,78 +106,84 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
         }
     }
 
-    public void loadCorrectAnswers(final int noOfQuestions) {
-//
-//        final String[] strCorrectAnswers = {""};
-//        final AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-//                AppDatabase.class, "omr").build();
-//        final OMRKey omrKey = new OMRKey();
-//        omrKey.setOmrkeyid(noOfQuestions);
-//        omrKey.setStrCorrectAnswers(strCorrectAnswers[0]);
+    public void loadCorrectAnswers(final int noOfQuestions){
 
-//        new AsyncTask<Void, Void, Void>() {
-//            @Override
-//            protected Void doInBackground(Void... voids) {
-//                if(db.omrKeyDao().findById(noOfQuestions) != null)
-//                    strCorrectAnswers[0] = db.omrKeyDao().findById(noOfQuestions).getStrCorrectAnswers();
-//                return null;
-//            }
-//
-//            @Override
-//            protected void onPostExecute(Void aVoid) {
-//                super.onPostExecute(aVoid);
-//
-//                int[] answers;
-//                int correctAnswer;
-//                CheckBox checkBox;
-//
-//                answers = AnswersUtils.strtointAnswers(strCorrectAnswers[0]);
-//
-//                if(answers != null){
-//                    for(int i=0; i< answers.length; i++){
-//                        correctAnswer = answers[i];
-//                        if(correctAnswer != 0){
-//                            checkBox = findViewById((i*5) + (correctAnswer - 1));
-//                            checkBox.setChecked(true);
-//                        }
-//                    }
-//                }
-//            }
-//        }.execute();
+        final String[] strCorrectAnswers = {""};
+        final AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "omr").build();
+        final OMRKey omrKey = new OMRKey();
+        omrKey.setOmrkeyid(noOfQuestions);
+        omrKey.setStrCorrectAnswers(strCorrectAnswers[0]);
 
+        new AsyncTask<Void, Void, Void>() {
 
-//    public void storeCorrectAnswers(int noOfQuestions){
-//        correctAnswers = new int[noOfQuestions];
-//        int cnt = -1;
-//        CheckBox checkBox;
-//        for(int i=0; i < noOfQuestions * 5; i++){
-//            checkBox = findViewById(i);
-//
-//            if(i%5 == 0)
-//                cnt++;
-//
-//            if(checkBox.isChecked()){
-//                correctAnswers[cnt] = (i % 5) + 1;
-//            }
-//        }
+            @Override
+            protected Void doInBackground(Void... voids) {
+                if(db.omrKeyDao().findById(noOfQuestions) != null)
+                    strCorrectAnswers[0] = db.omrKeyDao().findById(noOfQuestions).getStrCorrectAnswers();
+                return null;
+            }
 
-//        String strCorrectAnswers = AnswersUtils.inttostrAnswers(correctAnswers);
+            @SuppressLint("StaticFieldLeak")
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
 
-//        if(strCorrectAnswers != null){
-//            final AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-//                    AppDatabase.class, "omr").build();
-//            final OMRKey omrKey = new OMRKey();
-//            omrKey.setOmrkeyid(noOfQuestions);
-//            omrKey.setStrCorrectAnswers(strCorrectAnswers);
+                int[] answers;
+                int correctAnswer;
+                CheckBox checkBox;
 
-//            new AsyncTask() {
-//                @Override
-//                protected Void doInBackground(Void... voids) {
-//                    db.omrKeyDao().insertOMRKey(omrKey);
-//                    return null;
-//                }
-//            }.execute();
-//            Toast.makeText(this,"Answers saved",Toast.LENGTH_LONG).show();
+                answers = AnswersUtils.strtointAnswers(strCorrectAnswers[0]);
+
+                if(answers != null){
+                    for(int i=0; i< answers.length; i++){
+                        correctAnswer = answers[i];
+                        if(correctAnswer != 0){
+                            checkBox = findViewById((i*5) + (correctAnswer - 1));
+                            checkBox.setChecked(true);
+                        }
+                    }
+                }
+            }
+        }.execute();
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    public void storeCorrectAnswers(int noOfQuestions){
+        correctAnswers = new int[noOfQuestions];
+        int cnt = -1;
+        CheckBox checkBox;
+        for(int i=0; i < noOfQuestions * 5; i++){
+            checkBox = findViewById(i);
+
+            if(i%5 == 0)
+                cnt++;
+
+            if(checkBox.isChecked()){
+                correctAnswers[cnt] = (i % 5) + 1;
+            }
+        }
+
+        String strCorrectAnswers = AnswersUtils.inttostrAnswers(correctAnswers);
+
+        if(strCorrectAnswers != null){
+            final AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                    AppDatabase.class, "omr").build();
+            final OMRKey omrKey = new OMRKey();
+            omrKey.setOmrkeyid(noOfQuestions);
+            omrKey.setStrCorrectAnswers(strCorrectAnswers);
+
+            new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... voids) {
+                    db.omrKeyDao().insertOMRKey(omrKey);
+                    return null;
+                }
+            }.execute();
+            Toast.makeText(this,"Answers saved",Toast.LENGTH_LONG).show();
+        }
     }
 }
+
+
 
