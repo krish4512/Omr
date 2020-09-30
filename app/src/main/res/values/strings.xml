@@ -9,4 +9,7 @@
     <string name="save_answer_key">(Press back to save answer key)</string>
     <string name="omr_checker">OMR CHECKER</string>
     <string name="need_help_click_the_below_icon_to_view_tutorial">Need Help! Click the below icon to view tutorial</string>
+    <string name="camera_permission_confirmation">Permission Granted</string>
+    <string name="camera_permission_not_granted">Permission not Granted</string>
+    <string name="picture_taken">Picture Taken!</string>
 </resources>

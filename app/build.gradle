@@ -28,9 +28,26 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'androidx.room:room-runtime:2.2.5'
     implementation 'androidx.work:work-runtime:2.4.0'
+    implementation project(path: ':java')
+    implementation "androidx.lifecycle:lifecycle-viewmodel"
+    implementation "androidx.lifecycle:lifecycle-extensions"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     annotationProcessor 'androidx.room:room-compiler:2.2.5'
+    // https://mvnrepository.com/artifact/com.github.google/cameraview
+    compile group: 'com.github.google', name: 'cameraview', version: '9bbe07ba44'
+    compile group: 'androidx.lifecycle', name: 'lifecycle-extensions', version: '2.2.0-rc02'
+// https://mvnrepository.com/artifact/com.github.instacart.truetime-android/library
+    compile group: 'com.github.instacart.truetime-android', name: 'library', version: '3.4'
+    // https://mvnrepository.com/artifact/androidx.camera/camera-core
+    compile group: 'androidx.camera', name: 'camera-core', version: '1.0.0-alpha08'
 
+
+}
+allprojects {
+    repositories {
+
+        maven { url 'https://jitpack.io' }
+    }
 }

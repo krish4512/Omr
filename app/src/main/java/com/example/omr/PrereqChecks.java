@@ -3,6 +3,17 @@ package com.example.omr;
 import android.graphics.Bitmap;
 import android.util.Log;
 
+import org.opencv.android.Utils;
+import org.opencv.core.Core;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfDouble;
+import org.opencv.core.MatOfFloat;
+import org.opencv.core.MatOfInt;
+import org.opencv.imgproc.Imgproc;
+
+import java.util.ArrayList;
+
 public class PrereqChecks {
 
     private final static int BLUR_VALUE = 110;

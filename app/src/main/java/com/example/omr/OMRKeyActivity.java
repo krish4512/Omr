@@ -139,7 +139,7 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
                     for(int i=0; i< answers.length; i++){
                         correctAnswer = answers[i];
                         if(correctAnswer != 0){
-                            checkBox = findViewById((i*5) + (correctAnswer - 1));
+                            checkBox = findViewById((i*4) + (correctAnswer - 1));
                             checkBox.setChecked(true);
                         }
                     }
@@ -153,14 +153,14 @@ public class OMRKeyActivity extends AppCompatActivity implements RadioButton.OnC
         correctAnswers = new int[noOfQuestions];
         int cnt = -1;
         CheckBox checkBox;
-        for(int i=0; i < noOfQuestions * 5; i++){
+        for(int i=0; i < noOfQuestions * 4; i++){
             checkBox = findViewById(i);
 
             if(i%5 == 0)
                 cnt++;
 
             if(checkBox.isChecked()){
-                correctAnswers[cnt] = (i % 5) + 1;
+                correctAnswers[cnt] = (i % 4) + 1;
             }
         }
 

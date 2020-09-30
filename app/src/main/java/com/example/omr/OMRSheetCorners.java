@@ -1,5 +1,8 @@
 package com.example.omr;
 
+
+import org.opencv.core.Point;
+
 public class OMRSheetCorners {
     //top corners
     private Point topLeftCorner;

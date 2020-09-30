@@ -18,8 +18,10 @@ public class MainActivity extends AppCompatActivity {
     Camera= findViewById(R.id.ib_camera);
         Camera.setOnClickListener(new View.OnClickListener()   {
             public void onClick(View v)  {
-                Intent intent = new Intent(MainActivity.this, CameraActivity.class);
-                startActivity(intent);
+                Intent cameraIntent = new Intent(MainActivity.this, CameraActivity.class);
+                cameraIntent.putExtra("noOfQuestions", noOfQuestions);
+                startActivity(cameraIntent);
+
             }
 
         });

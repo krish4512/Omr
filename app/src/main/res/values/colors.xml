@@ -9,4 +9,5 @@
     <color name="light_font">#FBFBFB</color>
     <color name="green">#49F085</color>
     <color name="red">#FF0048</color>
+    <color name="black_overlay">#66000000</color>
 </resources>

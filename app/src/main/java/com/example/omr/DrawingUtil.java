@@ -1,5 +1,11 @@
 package com.example.omr;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+
+import org.opencv.core.Point;
+
 public class DrawingUtil {
 
     OMRSheet omrSheet;

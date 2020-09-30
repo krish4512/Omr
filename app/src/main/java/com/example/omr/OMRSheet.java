@@ -1,5 +1,12 @@
 package com.example.omr;
 
+import android.graphics.Bitmap;
+import android.util.Log;
+
+import androidx.lifecycle.ViewModel;
+
+import org.opencv.core.Mat;
+
 public class OMRSheet extends ViewModel {
 
     private static String TAG="OMRSheet";
